@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SystemLosowania_MartaBiala.EdycjaKlasyPage"
+             xmlns:local="clr-namespace:SystemLosowania_MartaBiala">
+    <StackLayout>
+        <ListView x:Name="ListaUczniow">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding .}" VerticalOptions="CenterAndExpand" />
+                            <CheckBox IsChecked="{Binding Source={x:Reference ListaUczniow}, Path=BindingContext.Obecnosci[.], Mode=TwoWay}" />
+                            <Button Text="Usuń" Clicked="UsunUcznia_Clicked" CommandParameter="{Binding .}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button Text="Losuj Ucznia" Clicked="LosujUcznia_Clicked" />
+        <Button Text="Wczytaj z pliku" Clicked="WczytajListeZPliku_Clicked" />
+        <Button Text="Eksportuj do pliku" Clicked="EksportujDoPliku_Clicked" />
+    </StackLayout>
+</ContentPage>
